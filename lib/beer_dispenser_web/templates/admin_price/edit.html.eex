@@ -1,0 +1,8 @@
+<div class="sub-navigation">
+  <%= link "Back to prices", to: Routes.admin_price_path(@conn, :index) %>
+</div>
+
+<div class="preamble">
+  <h1>Edit price</h1>
+  <%= render("form.html", conn: @conn, changeset: @changeset, action: Routes.admin_price_path(@conn, :update, @price.id)) %>
+</div>

@@ -1,0 +1,6 @@
+<div class="preamble">
+  <h1>Register</h1>
+  <small>When you leave the page, your chip has to be scanned again</small>
+
+  <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :register)) %>
+</div>

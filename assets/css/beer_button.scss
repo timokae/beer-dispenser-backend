@@ -1,0 +1,82 @@
+.beer-button-container {
+  max-height: 44em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.beer-button {
+  $block: &;
+
+  display: block;
+  width: 16.75em;
+  height: 14.25em;
+  background-image: linear-gradient(180deg, #1b1b1b 0%, #353535 100%);
+  box-shadow: 0 1px 2px 0 rgba(213, 213, 213, 0.36);
+  border-radius: 50%;
+  padding: 1.5em;
+  outline: none;
+  margin-bottom: 2em;
+
+  &--filled {
+    svg path:nth-child(4) {
+      fill: #fbba00;
+      animation: drink 0.8s forwards 2s;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 1em 0 0 #020202, 0 -1px 0.25em 0 rgba(0, 0, 0, 0.5),
+      0 1.125em 0.25em 0 #000000, inset 0 1px 0.25em 0 rgba(255, 255, 255, 0.24);
+    border-radius: 50%;
+    transform: translatey(-0.625em);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-out;
+
+    svg {
+      width: 7.5em;
+      path {
+        transition: fill 0.5s ease-out;
+      }
+    }
+  }
+
+  &:hover {
+    background: linear-gradient(180deg, #1b1b1b 0%, #353535 100%);
+  }
+
+  &:hover #{$block}__content {
+    svg path:nth-child(4) {
+      fill: #fbba00 !important;
+    }
+  }
+
+  &:active #{$block}__content,
+  &:focus #{$block}__content {
+    animation: push 0.4s ease-out 2 alternate;
+    outline: none;
+  }
+}
+
+@keyframes push {
+  to {
+    box-shadow: 0 0em 0 0 #020202, 0 -1px 0.25em 0 rgba(0, 0, 0, 0.5),
+      0 0.125em 0.25em 0 #000000, inset 0 1px 0.25em 0 rgba(255, 255, 255, 0.24);
+    transform: translatey(0em);
+  }
+}
+
+.beer-price {
+  font-size: 3em;
+}
+
+@keyframes drink {
+  to {
+    fill: #fff;
+  }
+}

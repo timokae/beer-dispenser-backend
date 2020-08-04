@@ -1,0 +1,21 @@
+<div class="sub-navigation">
+  <%= link "Back to admin page", to: Routes.admin_page_path(@conn, :index) %>
+</div>
+
+<section class="preamble">
+  <h1>All users debts</h1>
+  <div class="table-wrapper">
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Debts + Invoices</th>
+    </tr>
+    <%= for user <- @users do %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= BeerDispenserWeb.Helper.currency_format(user.debts)%></td>
+      </tr>
+    <% end %>
+  </table>
+  </div>
+</section>

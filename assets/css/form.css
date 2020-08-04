@@ -1,0 +1,20 @@
+.form-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-wrapper form svg {
+  margin-bottom: 20px;
+}
+
+.form-wrapper form button {
+  margin: 0 auto;
+  width: 50%;
+}

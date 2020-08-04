@@ -1,0 +1,42 @@
+<div class="sub-navigation">
+  <%= link "Back to admin page", to: Routes.admin_page_path(@conn, :index) %>
+  <%= link "Create", to: Routes.admin_user_path(@conn, :new) %>
+  <%= link "Send Invoice Reminder", to: Routes.admin_page_path(@conn, :send_reminder), method: :post, data: [confirm: "You're about to send an reminder to all users. Are you sure?"]%>
+  <%= if BeerDispenser.Accounts.User.has_role?(@current_user, "superadmin") do %>
+    <%= link "All debts", to: Routes.debts_path(@conn, :debts) %>
+  <% end %>
+</div>
+
+<section class="preamble">
+  <h1>All users</h1>
+  <div class="table-wrapper">
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Activated</th>
+      <th>Pending Invoices</th>
+      <th>Role</th>
+      <th>Actions</th>
+    </tr>
+    <%= for user <- @users do %>
+      <tr>
+        <td><%= user.email %></td>
+
+        <td>
+          <%= if user.confirmed_at != nil do %>
+            Yes
+          <% else %>
+            No
+          <% end %>
+        </td>
+        <td><%= length(user.invoices) %></td>
+        <td><%= BeerDispenser.Accounts.User.highest_role(user) %></td>
+        <td class="action-cell">
+          <%= link "Deposit", to: Routes.admin_user_deposit_path(@conn, :deposit_form, user) %>
+          <%= link "Edit", to: Routes.admin_user_path(@conn, :edit, user) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  </div>
+</section>

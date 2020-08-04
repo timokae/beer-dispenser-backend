@@ -1,0 +1,25 @@
+<div class="admin-menu preamble">
+  <%= link "Users", to: Routes.admin_user_path(@conn, :index), class: "action-link" %>
+  <%= link "Prices", to: Routes.admin_price_path(@conn, :index), class: "action-link" %>
+  <%= link "Statistics", to: Routes.admin_statistic_path(@conn, :show, Timex.now().year), class: "action-link" %>
+  <%= link "Settings", to: Routes.admin_setting_path(@conn, :edit, @settings_id), class: "action-link" %>
+  <%= link "Logs", to: Routes.admin_logs_path(@conn, :index), class: "action-link" %>
+<div>
+
+
+<h3>Last Scan</h3>
+<%= if @last_scan == nil do %>
+  <p>No scan stored</p>
+<% else %>
+  <ul>
+  <li style="font-size: 1.3rem">Chip ID:<br><%= @last_scan[:id] %></li>
+  <li>
+    <%= if @last_scan[:registered] do %>
+      Registered
+    <% else %>
+      Not registered
+    <% end %>
+  </li>
+<% end %>
+
+

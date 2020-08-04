@@ -1,0 +1,26 @@
+<div class="sub-navigation">
+  <%= link "Back to admin page", to: Routes.admin_page_path(@conn, :index) %>
+  <%= link "Create", to: Routes.admin_price_path(@conn, :new) %>
+</div>
+
+<div class="preamble">
+  <h1>All prices</h1>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Actions</th>
+    </tr>
+    <%= for price <- @prices do %>
+      <tr>
+        <td><%= price.name %></td>
+        <td><%= price.amount %></td>
+        <td class="action-cell">
+          <%= link "Edit", to: Routes.admin_price_path(@conn, :edit, price.id) %>
+          <%= link "Delete", to: Routes.admin_price_path(@conn, :delete, price.id), method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

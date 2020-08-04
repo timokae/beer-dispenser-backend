@@ -1,0 +1,21 @@
+<div class="sub-navigation">
+  <%= link "Back to admin page", to: Routes.admin_page_path(@conn, :index) %>
+</div>
+
+<section class="preamble">
+
+  <h1><%= @year %></h1>
+
+  <table>
+    <tr>
+      <th>Month</th>
+      <th>Amount</th>
+    </tr>
+    <%= for month <- Map.keys(@buckets) do %>
+      <tr>
+        <td><%= Timex.month_name(month) %></td>
+        <td><%= BeerDispenserWeb.Helper.currency_format(@buckets[month]) %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>

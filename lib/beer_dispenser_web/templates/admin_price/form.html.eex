@@ -1,0 +1,11 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label_tag f, :amount, "In cent, e.g. 150 equals 1.5€" %>
+  <%= number_input f, :amount %>
+  <%= error_tag f, :amount %>
+
+  <%= submit "Save"%>
+<% end %>

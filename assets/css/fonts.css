@@ -1,0 +1,11 @@
+@font-face {
+  font-family: campton;
+  font-weight: normal;
+  src: url("/fonts/campton_book.otf") format("opentype");
+}
+
+@font-face {
+  font-family: campton;
+  font-weight: bold;
+  src: url("/fonts/campton_bold.otf") format("opentype");
+}

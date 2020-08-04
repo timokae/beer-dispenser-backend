@@ -1,0 +1,30 @@
+<div class="sub-navigation">
+  <%= link "Back to users", to: Routes.admin_user_path(@conn, :index) %>
+</div>
+
+<section class="preamble">
+  <h1>New user</h1>
+
+  <%= form_for @changeset, Routes.admin_user_path(@conn, :create), fn f -> %>
+    <%= label f, :email %>
+    <%= text_input f, :email %>
+    <%= error_tag f, :email %>
+
+    <%= label f, :name %>
+    <%= text_input f, :name %>
+    <%= error_tag f, :name %>
+
+
+    <%= label f, :chip_id %>
+    <%= text_input f, :chip_id %>
+    <%= error_tag f, :chip_id %>
+
+    <%= label f, :role %>
+    <%= select f, :role, ["user", "admin", "testuser"] %>
+    <%= error_tag f, :role %>
+
+    <div>
+      <%= submit "Save" %>
+    </div>
+  <% end %>
+</section>

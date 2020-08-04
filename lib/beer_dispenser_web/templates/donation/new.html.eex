@@ -1,0 +1,27 @@
+<div class="sub-navigation">
+  <%= link "Back to profile", to: Routes.user_path(@conn, :index) %>
+</div>
+
+<section class="preamble">
+  <h1>Create beer donation</h1>
+
+  <%= form_for @changeset, Routes.donation_path(@conn, :create), fn f -> %>
+    <%= label_tag f, :amount, "number of drinks you want to donate" %>
+    <%= number_input f, :amount %>
+    <%= error_tag f, :amount %>
+
+    <%= label f, :message %>
+    <%= text_input f, :message %>
+    <%= error_tag f, :message %>
+
+    <%= hidden_input f, :price_id, value: @beer_id %>
+
+    <%#<%= label f, :price_id, "Beverage" %>
+    <%#<%= select f, :price_id, @options, select: @beer_id, value: @beer_id, disabled: true %>
+    <%#<%= error_tag f, :price_id %>
+
+    <div>
+      <%= submit "Save" %>
+    </div>
+  <% end %>
+</section>

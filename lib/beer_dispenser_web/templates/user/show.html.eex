@@ -1,0 +1,48 @@
+<div class="sub-navigation">
+  <%= link "Edit Profile", to: Routes.user_path(@conn, :edit, @user) %>
+  <%= link "Create Donation", to: Routes.donation_path(@conn, :new) %>
+</div>
+
+<section class="preamble">
+  <p style="text-align: center; font-size: 2rem;">Your current balance:</p>
+
+  <%= live_render(@conn, BeerDispenserWeb.Live.DebtLiveView, session: %{"debt_amount" => @user.debts, "id" => @user.id, "animation_class" => ""}) %>
+
+  <%= form_for @conn, "/invoices/create", [style: "margin: 0 auto; margin-bottom: 60px; display: flex; justify-content: center;"],fn _ -> %>
+    <%= submit "Create invoice", class: "order-btn" %>
+  <% end %>
+</section>
+
+<section class="followup">
+  <div class="followup-child">
+    <h2>Your Invoices</h2>
+
+    <%= if length(@user.invoices) > 0 do %>
+      <div class="sub-navigation__no-padding">
+        <%= link("Pay all with Paypal", to: Routes.page_path(@conn, :forward, url: BeerDispenserWeb.Helper.paypal_link(BeerDispenserWeb.Helper.sum_of_invoices(@user.invoices))), target: "_blank") %>
+        <%= link("I've paid all", to: Routes.invoices_path(@conn, :pay_all), method: :post, data: [confirm: "Are you sure?"]) %>
+      </div>
+      <table>
+        <tr>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+        <%= for invoice <- @user.invoices do %>
+          <tr>
+            <td><%= BeerDispenserWeb.Helper.currency_format(invoice.amount) %></td>
+            <td><%= BeerDispenserWeb.Helper.format_date(invoice.inserted_at) %></td>
+            <td class="action-cell">
+              <%= if invoice.status == 0 do %>
+                <%= link("Pay with Paypal", to: Routes.page_path(@conn, :forward, url: BeerDispenserWeb.Helper.paypal_link(invoice.amount)), target: "_blank") %>
+                <%= link("I've paid", to: Routes.invoices_path(@conn, :update, invoice.id, status: 1), method: :post, data: [confirm: "Are you sure?"]) %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <p>You don't have any pending invoices</p>
+    <% end %>
+  </div>
+</section>

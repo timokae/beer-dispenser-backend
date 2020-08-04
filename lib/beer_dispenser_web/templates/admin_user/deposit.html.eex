@@ -1,0 +1,19 @@
+<div class="sub-navigation">
+  <%= link "Back to users", to: Routes.admin_user_path(@conn, :index) %>
+</div>
+
+<section class="preamble">
+  <h1>Deposit Money</h1>
+
+  <%= form_for @conn, Routes.admin_user_deposit_path(@conn, :deposit, @user.id), [method: :post], fn f -> %>
+    <%= hidden_input f, :user_id, value: @user.id %>
+
+    <%= label_tag f, :amount, "In cent, e.g. 150 equals 1.5€" %>
+    <%= number_input f, :amount %>
+    <%= error_tag f, :amount %>
+
+    <div>
+      <%= submit "Save" %>
+    </div>
+  <% end %>
+</section>

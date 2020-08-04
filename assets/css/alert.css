@@ -1,0 +1,39 @@
+.alert {
+  animation: vanish 0s ease-out 1.5s 1 forwards;
+  position: absolute;
+  width: 90%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 1rem;
+}
+
+@keyframes vanish {
+  to {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+  }
+}
+
+.alert-info {
+  color: hsl(169, 40%, 30%);
+  background-color: #00fdcf;
+  border-color: #00fdcf;
+}
+.alert-warning {
+  color: hsl(33, 40%, 20%);
+  background-color: #fd8700;
+  border-color: #fd8700;
+}
+
+.alert-danger {
+  color: hsl(0, 100%, 100%);
+  background-color: #fd3b00;
+  border-color: #fd3b00;
+}

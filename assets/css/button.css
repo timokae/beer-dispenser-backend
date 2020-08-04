@@ -1,0 +1,33 @@
+.button:focus,
+.button:hover,
+button:focus,
+button:hover,
+input[type="button"]:focus,
+input[type="button"]:hover,
+input[type="reset"]:focus,
+input[type="reset"]:hover,
+input[type="submit"]:focus,
+input[type="submit"]:hover {
+  border-color: white;
+  outline: 0;
+}
+
+button {
+  background: none;
+  border: 2px solid white;
+  border-radius: 0;
+  line-height: 1.6rem;
+  font-family: inherit;
+}
+
+.order-btn:active,
+button:hover {
+  background-color: #02c9a5;
+  border-color: #02c9a5;
+  color: white;
+}
+
+.order-btn:active,
+button:focus {
+  border-color: white;
+}

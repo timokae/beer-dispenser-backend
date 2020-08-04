@@ -1,0 +1,53 @@
+.table-wrapper {
+  width: 100%;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
+tr {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+tr:first-child {
+  background: none;
+}
+
+.action-cell form {
+  margin-bottom: 0;
+}
+
+.action-cell a {
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  height: auto;
+  display: inline-block;
+  width: 100%;
+}
+
+.action-cell button:hover,
+a:hover {
+  background: none;
+  color: #02c9a5;
+}
+
+@media screen and (min-width: 764px) {
+  .action-cell a {
+    width: auto;
+    margin-left: 2rem;
+  }
+
+  .action-cell > a:first-of-type {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,20 @@
+<div class="sub-navigation">
+  <%= link "Back to admin page", to: Routes.admin_page_path(@conn, :index) %>
+</div>
+
+<div class="preamble">
+  <h1>Logs</h1>
+
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Amount</th>
+    </tr>
+    <%= for [date, count] <- @rows do %>
+      <tr>
+        <td><%= date %></td>
+        <td><%= count %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

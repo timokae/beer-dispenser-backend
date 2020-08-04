@@ -1,0 +1,19 @@
+<div class="sub-navigation">
+  <%= link "Back to admin page", to: Routes.admin_page_path(@conn, :index) %>
+</div>
+
+<div class="preamble">
+  <%= form_for @conn, Routes.admin_setting_path(@conn, :update, @id), [as: :entries, method: :put], fn f -> %>
+    <%= label_tag f, :paypal_url %>
+    <%= text_input f, :paypal_url, value: @entries["paypal_url"] %>
+    <%= error_tag f, :paypal_url %>
+
+    <%= label_tag f, :invoice_threshold, "In cent, e.g. 1000 equals 10€" %>
+    <%= number_input f, :invoice_threshold, value: @entries["invoice_threshold"] %>
+    <%= error_tag f, :invoice_threshold %>
+
+    <div>
+      <%= submit "Save" %>
+    </div>
+  <% end %>
+<div>
