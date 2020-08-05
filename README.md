@@ -28,39 +28,6 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * `Docker images pullen (docker-compose pull)`
   * `systemctl start theken.service`
 
-# Tasks
-* ~~Registrierungslink zur Accountaktivierung~~
-* ~~Abrechnen implementieren~~
-* ~~Rechnungen mit Id versehen~~
-*  ~~Mail schicken bei Charge ohne Account~~
-* ~~Admin backend~~
-* ~~Gmail statt SendGrind benutzen~~
-* ~~Role zu Admin User Page hinzufügen~~
-* ~~Ausprobieren ob Docker noch funktioniert~~
-* ~~Freibierfunktion (20Liter/Bier für alle anderen freischalten)~~
-* ~~Neue User anlegen können~~
-* ~~Alle Preise anzeigen und bestellbar machen~~
-* ~~InvoiceGenerator triggert zu früh~~
-* ~~Wenn Account nicht aktiviert abbrechen~~
-* ~~Passwort statt Textfelder beim Profilbearbeiten~~
-* ~~TestUser Role~~
-* ~~Userlink ohne Id~~
-* ~~Statistics aktuelle Jahr~~
-* ~~Emails manuell triggern~~
-* ~~Remember me~~
-* ~~Aktuelles Guthaben unter Preis~~
-* ~~Favicon~~
-* ~~Mit Vorkasse bezahlen über Admin~~
-* ~~Paypal in neuem Fenster und Email senden~~
-* ~~Email anpassen~~
-
-* ~~Ansicht mit aktuellen Schulden~~
-* ~~SuperAdmin~~
-* ~~generell Rolen einfügen~~
-* Datatable als Counter, jede Row Preis + Created at!
-
-* CI/CD einreichten
-
 Add role to user
 
 ```elixir
