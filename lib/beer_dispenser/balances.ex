@@ -16,8 +16,8 @@ defmodule BeerDispenser.Balances do
   @doc """
   Decreases number of donations or increases the debt amount of the user
 
-  When donations for the requestes price exists, no charges are made. Instead amount of donations is decreases.
-  Otherwise the user will be charges the given price times the amount of ordered beverages.
+  When donations for the requested price exist, no charges are made. Instead the amount of donations is decreased.
+  Otherwise the user will be charges the given price times the amount of the ordered beverages.
   """
   @spec order(User.t(), integer(), Price.t()) ::
           {:error, String.t()} | {:ok, Donation.t()} | {:ok, Debt.t()}
@@ -43,7 +43,7 @@ defmodule BeerDispenser.Balances do
   # --- Debt ---
 
   @doc """
-  Increases the debts of the user with the given price time the amount
+  Increases the debts of the user with the given price times the amount
   """
   @spec charge(User.t(), integer(), Price.t()) ::
           {:ok, Debt.t()} | {:error, Ecto.Changeset.t()}
@@ -66,7 +66,7 @@ defmodule BeerDispenser.Balances do
   end
 
   @doc """
-  Reduces the debts of the user with the given amount
+  Decreases the debts of the user with the given amount
   """
   def deposit_money(user, amount) do
     user
@@ -76,8 +76,6 @@ defmodule BeerDispenser.Balances do
 
   # --- Invoice ---
   @doc """
-  Updates an invoice if one exists, or creates a new one
-
   If the the invoices is created the debt of the user is resetted.
   When is debt is zero, an error is returned
   """
